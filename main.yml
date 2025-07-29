@@ -1,0 +1,31 @@
+name: Node.js Telegram Bot CI/CD
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run bot (for testing purposes, replace with actual deployment)
+      run: npm start
+      env:
+        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+
+
